@@ -1,73 +1,69 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script>
+            function validateForm() {
+          let fullname = document.forms["myForm"]["fullname"].value;
+          let email = document.forms["myForm"]["email"].value;
+          let phone = document.forms["myForm"]["phone"].value;
+          let gender = document.forms["myForm"]["gender"].value;
+          let password = document.forms["myForm"]["password"].value;
+        
+          if (fullname == "" || email == "" || phone == "" || gender == "" || password == "") {
+            alert("Please fill out all fields.");
+            return false;
+         }
+        
+          if (!validateEmail(email)) {
+            document.getElementById("error").innerHTML = "Please enter a valid email address.";
+            return false;
+          }
+        
+          document.getElementById("success").innerHTML = "Form submitted successfully!";
+          return true;
+        }
+        
+        function validateEmail(email) {
+          var re = /\S+@\S+\.\S+/;
+          return re.test(email);
+        
+    }
+        
+        </script>
         <title>My First Web Page</title>
-        <link rel="stylesheet" href="style.css">
+        <!-- <link rel="stylesheet" href="style.css"></link> -->
+        
     </head>
     <body>
         <h1>Fill in your Biodata</h1>
-        <form id="myForm" onsubmit="return validateForm()" method="post"></form>
+        <form name="myForm" onsubmit="return validateForm()" method="post">
         <fieldset>
             <legend>Biodata</legend>
             <label for="fullname">Fullname</label>
-            <input type="text" name="fullname" id="fullname">
+            <input type="text" name="fullname">
 
             <label for="email">Email</label>
-            <input type="text" name="email" id="email">
+            <input type="text" name="email">
 
             <label for="phone">Phone number:</label>
-            <input type="tel" id="phone" name="phone" required>
-
-            <!-- <label for="dob">Date of Birth</label>
-            <input type="date" name="dob" id="dob"> -->
+            <input type="tel" name="phone" required>
 
             <label for="gender">Gender:</label>
-            <select id="gender" name="gender" required>
+            <select name="gender" required>
             <option value="">Select gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
-            </select>
-            
+            </select>           
 
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" name="password" required>
 
             <input type="submit" value="Submit">
-
-            <div id="error" style="color: red;"></div>
-            <div id="success" style="color: green;"></div>
-
-
         </fieldset>
+    </form>
+            <!-- <div id="error" style="color: red;"></div>
+            <div id="success" style="color: green;"></div> -->
+ 
     </body>
-<script>
-    function validateForm() {
-  var fullname = document.forms["myForm"]["fullname"].value;
-  var email = document.forms["myForm"]["email"].value;
-  var phone = document.forms["myForm"]["phone"].value;
-  var gender = document.forms["myForm"]["gender"].value;
-  var password = document.forms["myForm"]["password"].value;
-
-  if (fullname == "" || email == "" || phone == "" || gender == "" || password == "") {
-    alert("Please fill out all fields.");
-    return false;
-  }
-
-  if (!validateEmail(email)) {
-    document.getElementById("error").innerHTML = "Please enter a valid email address.";
-    return false;
-  }
-
-  document.getElementById("success").innerHTML = "Form submitted successfully!";
-  return true;
-}
-
-function validateEmail(email) {
-  var re = /\S+@\S+\.\S+/;
-  return re.test(email);
-}
-
-</script>
-
 </html>
