@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Fill in your Biodata</h1>
-        <form method="#" ></form>
+        <form id="myForm" onsubmit=" return validateForm()" method="#"></form>
         <fieldset>
             <legend>Biodata</legend>
             <label for="fullname">Fullname</label>
@@ -27,4 +27,33 @@
             <input type="button" value="submit">
         </fieldset>
     </body>
+<script>
+    function validateForm() {
+  var name = document.forms["myForm"]["name"].value;
+  var email = document.forms["myForm"]["email"].value;
+  var phone = document.forms["myForm"]["phone"].value;
+  var gender = document.forms["myForm"]["gender"].value;
+  var password = document.forms["myForm"]["password"].value;
+
+  if (name == "" || email == "" || phone == "" || gender == "" || password == "") {
+    alert("Please fill out all fields.");
+    return false;
+  }
+
+  if (!validateEmail(email)) {
+    document.getElementById("error").innerHTML = "Please enter a valid email address.";
+    return false;
+  }
+
+  document.getElementById("success").innerHTML = "Form submitted successfully!";
+  return true;
+}
+
+function validateEmail(email) {
+  var re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+</script>
+
 </html>
