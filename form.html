@@ -6,36 +6,50 @@
     </head>
     <body>
         <h1>Fill in your Biodata</h1>
-        <form id="myForm" onsubmit=" return validateForm()" method="#"></form>
+        <form id="myForm" onsubmit="return validateForm()" method="post"></form>
         <fieldset>
             <legend>Biodata</legend>
             <label for="fullname">Fullname</label>
             <input type="text" name="fullname" id="fullname">
+
             <label for="email">Email</label>
             <input type="text" name="email" id="email">
-            <label for="dob">Date of Birth</label>
-            <input type="date" name="dob" id="dob">
-            <label for="Male">Male</label>
-            <input type="radio" name="sex" id="male" value="male">
-            <label for="female">Female</label>
-            <input type="radio" name="sex" id="female" value="female">
-            <select id="state">
-                <option value="Oyo">Oyo</option>
-                <option value="Kano">Kano</option>
-                <option value="Imo">imo</option>
+
+            <label for="phone">Phone number:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <!-- <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" id="dob"> -->
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+            <option value="">Select gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
             </select>
-            <input type="button" value="submit">
+            
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <input type="submit" value="Submit">
+
+            <div id="error" style="color: red;"></div>
+            <div id="success" style="color: green;"></div>
+
+
         </fieldset>
     </body>
 <script>
     function validateForm() {
-  var name = document.forms["myForm"]["name"].value;
+  var fullname = document.forms["myForm"]["fullname"].value;
   var email = document.forms["myForm"]["email"].value;
   var phone = document.forms["myForm"]["phone"].value;
   var gender = document.forms["myForm"]["gender"].value;
   var password = document.forms["myForm"]["password"].value;
 
-  if (name == "" || email == "" || phone == "" || gender == "" || password == "") {
+  if (fullname == "" || email == "" || phone == "" || gender == "" || password == "") {
     alert("Please fill out all fields.");
     return false;
   }
